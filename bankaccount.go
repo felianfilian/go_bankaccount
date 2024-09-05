@@ -8,15 +8,19 @@ func main() {
 		showOptions()
 		fmt.Scan(&option)
 
-		switch option {
-			case 4:
-				return
-		}
-
-		// if(option == 4) {
-		// 	fmt.Println("Goodbye")
-		// 	break
+		// switch option {
+		// 	case 4:
+		// 		return
 		// }
+
+		if(option == 1) {
+
+		} else if(option == 2) {
+			
+		} else if(option == 4) {
+			fmt.Println("Goodbye")
+			break
+		}
 	}
 	
 }
