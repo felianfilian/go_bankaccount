@@ -7,10 +7,16 @@ func main() {
 	for {
 		showOptions()
 		fmt.Scan(&option)
-		if(option == 4) {
-			fmt.Println("Goodbye")
-			break
+
+		switch option {
+			case 4:
+				return
 		}
+
+		// if(option == 4) {
+		// 	fmt.Println("Goodbye")
+		// 	break
+		// }
 	}
 	
 }
