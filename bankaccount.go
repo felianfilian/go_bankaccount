@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 func main() {
 	var option int
@@ -32,4 +35,9 @@ func showOptions() {
 	fmt.Println("3) withdraw money")
 	fmt.Println("4) exit")
 	fmt.Print("choice: ")
+}
+
+func writeToFile(value float64) {
+	txtBalance := fmt.Sprint(value)
+	os.WriteFile("balance.txt", []byte(txtBalance), 0644)
 }
