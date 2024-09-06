@@ -11,6 +11,8 @@ const saveFile = "balance.txt"
 func main() {
 	var option int
 	var balance float64 = readBalance()
+	var amount float64
+
 	for {
 		showOptions(balance)
 		fmt.Scan(&option)
@@ -23,9 +25,20 @@ func main() {
 		if option == 1 {
 
 		} else if option == 2 {
-			fmt.Scan(&balance)
+			fmt.Print("How much: ")
+			fmt.Scan(&amount)
+			balance += amount
 			writeToFile(balance)
 
+		} else if option == 3 {
+			fmt.Print("How much: ")
+			fmt.Scan(&amount)
+			if amount > balance {
+				fmt.Printf("\nNot enough cash\n\n")
+			} else {
+				balance -= amount
+			}
+			writeToFile(balance)
 		} else if option == 4 {
 			fmt.Println("Goodbye")
 			break
