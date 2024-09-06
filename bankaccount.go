@@ -3,11 +3,14 @@ package main
 import (
 	"fmt"
 	"os"
+	"strconv"
 )
+
+const saveFile = "balance.txt"
 
 func main() {
 	var option int
-	var balance float64 
+	var balance float64 = readBalance()
 	for {
 		showOptions(balance)
 		fmt.Scan(&option)
@@ -17,18 +20,18 @@ func main() {
 		// 		return
 		// }
 
-		if(option == 1) {
+		if option == 1 {
 
-		} else if(option == 2) {
+		} else if option == 2 {
 			fmt.Scan(&balance)
 			writeToFile(balance)
 
-		} else if(option == 4) {
+		} else if option == 4 {
 			fmt.Println("Goodbye")
 			break
 		}
 	}
-	
+
 }
 
 func showOptions(balance float64) {
@@ -44,5 +47,12 @@ func showOptions(balance float64) {
 
 func writeToFile(value float64) {
 	txtBalance := fmt.Sprint(value)
-	os.WriteFile("balance.txt", []byte(txtBalance), 0644)
+	os.WriteFile(saveFile, []byte(txtBalance), 0644)
+}
+
+func readBalance() float64 {
+	data, _ := os.ReadFile(saveFile)
+	txtBalance := string(data)
+	balance, _ := strconv.ParseFloat(txtBalance, 64)
+	return balance
 }
