@@ -64,8 +64,15 @@ func writeToFile(value float64) {
 }
 
 func readBalance() float64 {
-	data, _ := os.ReadFile(saveFile)
+	data, err := os.ReadFile(saveFile)
+	if(err != nil) {
+		return 1000
+	}
 	txtBalance := string(data)
-	balance, _ := strconv.ParseFloat(txtBalance, 64)
+	balance, err := strconv.ParseFloat(txtBalance, 64)
+	if(err != nil) {
+		return 1000
+	}
+
 	return balance
 }
