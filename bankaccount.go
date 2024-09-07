@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"os"
 	"strconv"
@@ -63,16 +64,16 @@ func writeToFile(value float64) {
 	os.WriteFile(saveFile, []byte(txtBalance), 0644)
 }
 
-func readBalance() float64 {
+func readBalance() (float64, error) {
 	data, err := os.ReadFile(saveFile)
 	if(err != nil) {
-		return 1000
+		return 1000, errors.New("failed to find file")
 	}
 	txtBalance := string(data)
 	balance, err := strconv.ParseFloat(txtBalance, 64)
 	if(err != nil) {
-		return 1000
+		return 1000, errors.New("failed to parse balance")
 	}
 
-	return balance
+	return balance, nil
 }
