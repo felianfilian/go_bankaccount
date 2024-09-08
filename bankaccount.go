@@ -11,7 +11,11 @@ const saveFile = "balance.txt"
 
 func main() {
 	var option int
-	var balance float64 = readBalance()
+	var balance, err = readBalance()
+	if(err != nil) {
+		fmt.Println(err)
+		fmt.Println("Cant open file")
+	}
 	var amount float64
 
 	for {
