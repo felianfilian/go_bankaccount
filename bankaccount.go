@@ -30,8 +30,10 @@ func main() {
 		if option == 1 {
 
 		} else if option == 2 {
-			fmt.Print("How much: ")
-			fmt.Scan(&amount)
+			amount, err = getUserInput("How much: ")
+			if(err != nil) {
+				fmt.Println(err)
+			}
 			balance += amount
 			writeToFile(balance)
 
@@ -80,4 +82,14 @@ func readBalance() (float64, error) {
 	}
 
 	return balance, nil
+}
+
+func getUserInput(infoText string) (float64, error) {
+	var userInput float64
+	fmt.Print(infoText)
+	fmt.Scan(&userInput)
+	if userInput <= 0 {
+		return 0, errors.New("negative not allowed")
+	}
+	return userInput, nil
 }
