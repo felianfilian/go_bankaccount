@@ -45,7 +45,7 @@ func main() {
 			} else {
 				balance -= amount
 			}
-			writeToFile(balance)
+			fileops.writeToFile(balance)
 		} else if option == 4 {
 			fmt.Println("Goodbye")
 			break
@@ -65,10 +65,7 @@ func showOptions(balance float64) {
 	fmt.Print("choice: ")
 }
 
-func writeToFile(value float64) {
-	txtBalance := fmt.Sprint(value)
-	os.WriteFile(saveFile, []byte(txtBalance), 0644)
-}
+
 
 func readBalance() (float64, error) {
 	data, err := os.ReadFile(saveFile)
