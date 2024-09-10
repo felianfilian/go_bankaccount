@@ -7,7 +7,7 @@ import (
 
 const saveFile = "balance.txt"
 
-func writeToFile(value float64) {
+func WriteToFile(value float64) {
 	txtBalance := fmt.Sprint(value)
 	os.WriteFile(saveFile, []byte(txtBalance), 0644)
 }

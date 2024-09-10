@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+
+	"dennis.com/bankaccount/fileops"
 )
 
 const saveFile = "balance.txt"
@@ -35,7 +37,7 @@ func main() {
 				fmt.Println(err)
 			}
 			balance += amount
-			writeToFile(balance)
+			fileops.WriteToFile(balance)
 
 		} else if option == 3 {
 			fmt.Print("How much: ")
@@ -45,7 +47,7 @@ func main() {
 			} else {
 				balance -= amount
 			}
-			fileops.writeToFile(balance)
+			fileops.WriteToFile(balance)
 		} else if option == 4 {
 			fmt.Println("Goodbye")
 			break
